@@ -4,6 +4,9 @@ permalink: /resume/
 author_profile: true
 ---
 
+
+<div class="LI-profile-badge"  data-version="v1" data-size="medium" data-locale="en_US" data-type="vertical" data-theme="dark" data-vanity="michael-galde-39aa0a26"><a class="LI-simple-link" href='https://www.linkedin.com/in/michael-galde-39aa0a26?trk=profile-badge'>Michael Galde</a></div>
+
 Michael Galde
 ============
 
@@ -19,12 +22,11 @@ Education
 ---------
 
 2017-2019 (expected)
-:   **MSc, Information Assurance**; University of Nebraska
-
+:   **MS, Information Assurance**; University of Nebraska
     - Omaha, Nebraska
 
 2010-2013
-:   **BSc, Political Science**; University of Nebraska
+:   **BS, Political Science**; University of Nebraska
     - *Minor: Islamic Studies*
     - Omaha, Nebraska
 
