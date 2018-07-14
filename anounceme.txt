@@ -2,18 +2,9 @@
 <!-- laglaglaglaglaglaglaglaglaglaglaglag -->Authenticating with public key "rsa-key-20180415"<!-- laglaglaglaglaglaglaglaglaglaglaglag --> <!-- laglaglaglaglaglaglaglaglaglaglaglag --> <!-- laglaglaglaglaglaglaglaglaglaglaglag -->
 <!-- laglaglaglaglaglaglaglaglaglaglaglag -->Welcome to Ubuntu 12.06.2 (GNU/Linux 4.4.0-124-generic x86_64)
 <!-- laglaglaglaglaglaglaglaglaglaglaglag -->All Systems <span id="b">ONLINE</span><!-- laglaglaglaglaglaglaglaglaglaglaglag --><!-- laglaglaglaglaglaglaglaglaglaglaglag --><!-- laglaglaglaglaglaglaglaglaglaglaglag -->
-
 <span id="a">root@apt-get-sudo.com</span>:<span id="b">~</span><span id="c">$</span> cat apt<!-- laglaglaglaglaglaglaglaglaglaglaglag -->-get-sudo<!-- laglaglaglaglaglaglaglaglaglaglaglag -->.com/Welcome<!-- laglaglaglaglaglaglaglaglaglaglaglag -->Guest.txt<!-- laglaglaglaglaglaglaglaglaglaglaglag --><!-- laglaglaglaglaglaglaglaglaglaglaglag -->
-
-Hi, my name is Michael Galde and I maintain Apt-get-sudo.com. <!-- laglaglaglaglaglaglaglaglaglaglaglag --> Welcome to my page!
-<!-- laglaglaglaglaglaglaglaglaglaglaglag --> <p>I spent several years as an Intelligence Analyst, but a few years ago a serendipitous event inspired me to get into Cyber Security, and I love it! There is nothing greater than finding vulnerabilities in computer systems and exploiting them and identifying mitigations, I view it all as a large logic puzzle which I really enjoy. I love the hunt!.</p> <!-- qowifjqwoeijfoqweijfqweoifjqweofijqweoqwoijefoqwijefoijfqiwoefjj -->
-<!-- qowifjqwoeijfoqweijfqweoifjqweofijqweoqwoijefoqwijefoijfqiwoefjj --> <p>I am currently attending the University of Nebraska at Omaha for my Masters in Cyber Security and am really enjoying the program. The University has recently been designated a National Center of Academic Excellence in Cyber Operations by the National Security Agency <!- oqwipjefqwioefjwioqfjoiqwjfeioqwjefoi --> and the opportunities available at this university have been inspiring.</p>
-<!- oqwipjefqwioefjwioqfjoiqwjfeioqwjefoi --> You found my home on the internet where I post allot of my projects so please feel free to say hello by sending me a email or a tweet <!-- slightdelayhere-->
-My email address is: <a href="mailto:mikeyg@apt-get-sudo.com">Mike@apt-get-sudo.com</a> <!- oqwipjefqwioefjwioqfjoiqwjfeioqwjefoi --> and my Twitter is: <a href="http://twitter.com/smashedbeatnik" target="_blank">@smashedbeatnik</a>.
-<!-- laglaglaglaglaglaglaglaglaglaglaglag --> So lets talk about me a little. <!-- laglaglaglaglaglaglaglaglaglaglaglag --> If you would like to know my history a little my Linkedin page can be found <a href="https://www.linkedin.com/in/michael-galde-39aa0a26/" target="_blank">Here</a>, <!-- laglaglaglaglaglaglaglaglaglaglaglag --> if that is not enough you are welcome to view my <!-- laglaglaglaglaglaglaglaglaglaglaglag --> <a href="https://resume.apt-get-sudo.com" target="_blank"> resume here.</a>
-<!-- laglaglaglaglaglaglaglaglaglaglaglag --> My <!-- laglaglaglaglaglaglaglaglaglaglaglag --> <span id="b">FUN</span> <!-- laglaglaglaglaglaglaglaglaglaglaglag --> projects can be viewed <a href="https://www.linkedin.com/in/michael-galde-39aa0a26/">Here</a> and I welcome any feedback.
-<!-- laglaglaglaglaglaglaglaglaglaglaglag --> <!-- laglaglaglaglaglaglaglaglaglaglaglag -->
-Thank you for taking the time to view my place on the internet, to continue please click here <!-- laglaglaglaglaglaglaglaglaglaglaglag --> <a href="https://www.apt-get-sudo.com" target="_blank"> Projects.</a>
-<!-- laglaglaglaglaglaglaglaglaglaglaglag -->
-<!-- laglaglaglaglaglaglaglaglaglaglaglag -->
-:<!-- laglaglaglaglaglaglaglaglaglaglaglag --> )
+Hi, I'm Michael.<!-- laglaglaglaglaglaglaglaglaglaglaglag --><p>You found my website so allow me to say hello to you.</p><!-- qowifjqwoeijfoqweijfqweoifjqweofijqweoqwoijefoqwijefoijfqiwoefjj -->
+<p>I work for a company in Nebraska and am loving my job, I am also going to school to get a degree in Information Assurance.</p><!- oqwipjefqwioefjwioqfjoiqwjfeioqwjefoi -->
+<p>I love to play video games, listen to music, and travel.</p><!-- owlsqweoifjqwoefijqwoeifjqwoefijwef -->
+If you would like to get in touch with me, whether it be for tech support or to just say hi<!-- slightdelayhere-->, feel free to send me an email or a tweet.<!-- longlongcomment --> My email address is: <a href="mailto:MikeyG@apt-get-sudo.com.com">Here</a> and my Twitter is: <a href="http://twitter.com/smashedbeatnik" target="_blank>@smashedbeatnik</a>.
+<p>And if you are exploring from one of my subdomains you can look at my various project by clicking  <a href="http://class.apt-get-sudo.com" target="_blank">here</a> and I hope you have a great day</a>.</p>
