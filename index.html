@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Michael Galde — Security researcher, tool builder, and educator. Technical portfolio covering network tools, ICS security research, and open-source projects.">
+  <title>apt-get-sudo | Michael Galde</title>
+
+  <!-- Favicon (add favicon files to repo root) -->
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/favicon-180x180.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://apt-get-sudo.com/">
+  <meta property="og:title" content="apt-get-sudo | Michael Galde">
+  <meta property="og:description" content="Security researcher, tool builder, and educator. Technical portfolio covering network tools, ICS security, and open-source projects.">
+  <meta property="og:site_name" content="apt-get-sudo">
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="apt-get-sudo | Michael Galde">
+  <meta name="twitter:description" content="Security researcher, tool builder, and educator. Network tools, ICS research, open-source projects.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ════════════════════ NAVIGATION ════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav-container">
+      <a href="#home" class="nav-logo">
+        <span class="nav-logo-prompt">$</span>apt-get-sudo
+      </a>
+      <div class="nav-right">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#tools"    class="nav-link">Tools</a></li>
+          <li><a href="#research" class="nav-link">Research</a></li>
+          <li><a href="#writeups" class="nav-link">Writeups</a></li>
+          <li><a href="#connect"  class="nav-link">Connect</a></li>
+        </ul>
+        <div class="nav-social">
+          <!-- Link back to professional site -->
+          <a href="https://michaelgalde.com" target="_blank" rel="noopener" class="nav-social-link" aria-label="Professional site — michaelgalde.com">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8l4 4-4 4"/><path d="M8 12h8"/>
+            </svg>
+          </a>
+          <a href="https://github.com/mgalde" target="_blank" rel="noopener" class="nav-social-link" aria-label="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+          </a>
+        </div>
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <svg class="theme-icon icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <svg class="theme-icon icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ════════════════════ HERO ════════════════════ -->
+    <section class="hero" id="home">
+      <div class="hero-blob-1"></div>
+      <div class="hero-blob-2"></div>
+      <div class="container">
+        <div class="hero-inner">
+
+          <div class="hero-prompt">
+            <span class="hero-prompt-dollar">$</span>
+            <span class="hero-prompt-cmd">whoami</span>
+            <span class="hero-prompt-sep">|</span>
+            <span>apt-get-sudo.com</span>
+          </div>
+
+          <h1 class="hero-title">
+            Michael<br>
+            <span class="gradient-text blink-cursor">Galde</span>
+          </h1>
+
+          <p class="hero-roles">
+            Security Researcher
+            <span class="sep">·</span>
+            Tool Builder
+            <span class="sep">·</span>
+            Educator
+          </p>
+
+          <p class="hero-sub">Assistant Professor at the University of Arizona. 10+ years in cybersecurity — Army intelligence, ICS security, network forensics, and ML-driven threat detection. This is where the tools and research live.</p>
+
+          <div class="hero-actions">
+            <a href="#tools" class="btn btn-primary">View Tools</a>
+            <a href="#research" class="btn btn-outline">Research Projects</a>
+          </div>
+
+          <a href="https://michaelgalde.com" target="_blank" rel="noopener" class="hero-professional-link">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+            </svg>
+            Professional site → michaelgalde.com
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ TOOLS & PROJECTS ════════════════════ -->
+    <section class="section tools" id="tools">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label-mono">// tools &amp; projects</span>
+          <h2 class="section-title">Built Things</h2>
+          <p class="section-sub">Open-source tools for network analysis, visibility, and defense. If it touches packets, it probably ended up here.</p>
+        </div>
+
+        <div class="tools-grid">
+
+          <!-- HexCheck -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <span class="tool-name">HexCheck</span>
+              <a href="https://github.com/mgalde/HexCheck" target="_blank" rel="noopener" class="tool-gh-link" aria-label="HexCheck on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                </svg>
+                GitHub
+              </a>
+            </div>
+            <p class="tool-desc">Network visualization tool that renders host relationships and traffic flows as interactive graphs. Built for rapid situational awareness during investigations — feed it a network and see what's actually talking to what.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">tkinter</span>
+            </div>
+          </div>
+
+          <!-- PCAPMap -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <span class="tool-name">PCAPMap</span>
+              <a href="https://github.com/mgalde/PCAPMap" target="_blank" rel="noopener" class="tool-gh-link" aria-label="PCAPMap on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                </svg>
+                GitHub
+              </a>
+            </div>
+            <p class="tool-desc">Parses PCAP files and generates interactive network topology maps from captured traffic. Uses Scapy for packet dissection and NetworkX for graph construction; Bokeh renders the output as a navigable browser visualization.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+              <span class="tech-tag">Scapy</span>
+              <span class="tech-tag">NetworkX</span>
+              <span class="tech-tag">Bokeh</span>
+            </div>
+          </div>
+
+          <!-- Bee Knees -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <span class="tool-name">Bee Knees</span>
+              <a href="https://github.com/mgalde/bee-knees" target="_blank" rel="noopener" class="tool-gh-link" aria-label="Bee Knees on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                </svg>
+                GitHub
+              </a>
+            </div>
+            <p class="tool-desc">Low-interaction honeypot with real-time intrusion notifications. Listens on configurable ports, logs connection metadata and payloads, and pushes alerts on contact. Useful for detecting lateral movement and probing activity on networks you care about.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+            </div>
+          </div>
+
+          <!-- DropTap -->
+          <div class="tool-card">
+            <div class="tool-card-header">
+              <span class="tool-name">DropTap</span>
+              <a href="https://github.com/mgalde/DropTap" target="_blank" rel="noopener" class="tool-gh-link" aria-label="DropTap on GitHub">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                </svg>
+                GitHub
+              </a>
+            </div>
+            <p class="tool-desc">Network diagnostics tool for quick connectivity and path analysis. Surfaces packet loss, latency distribution, and routing behavior in a format that's actually readable under pressure.</p>
+            <div class="tech-tags">
+              <span class="tech-tag">Python</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ RESEARCH ════════════════════ -->
+    <section class="section research" id="research">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label-mono">// active research</span>
+          <h2 class="section-title">Current Projects</h2>
+          <p class="section-sub">Research at the intersection of machine learning, network intelligence, and critical infrastructure security — with real stacks, not hypotheticals.</p>
+        </div>
+
+        <div class="research-grid">
+
+          <!-- GRID-LM -->
+          <div class="research-card">
+            <div class="research-meta">
+              <span class="research-tag">2024</span>
+              <span class="research-tag research-tag-active">Active</span>
+            </div>
+            <h3>GRID-LM</h3>
+            <p>LLM application for industrial network monitoring. Fine-tuned on OT protocol traffic to interpret BACnet, LonTalk, and Modbus patterns in natural language — bridging the gap between packet-level forensics and analyst-facing reporting in ICS environments.</p>
+            <div class="research-stack">
+              <p class="research-stack-label">stack / methodology</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">LLM fine-tuning</span>
+                <span class="tech-tag">OT protocols</span>
+                <span class="tech-tag">BACnet</span>
+                <span class="tech-tag">LonTalk</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- DaRIA -->
+          <div class="research-card">
+            <div class="research-meta">
+              <span class="research-tag">2024</span>
+              <span class="research-tag research-tag-active">Active</span>
+            </div>
+            <h3>DaRIA</h3>
+            <p>Adaptive network intelligence agent for dynamic threat detection and response. Operates autonomously across heterogeneous network environments, adjusting detection thresholds based on observed traffic baselines rather than static signatures.</p>
+            <div class="research-stack">
+              <p class="research-stack-label">stack / methodology</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">ML</span>
+                <span class="tech-tag">Anomaly detection</span>
+                <span class="tech-tag">Autonomous agents</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SPINE -->
+          <div class="research-card">
+            <div class="research-meta">
+              <span class="research-tag">2024 – Present</span>
+              <span class="research-tag research-tag-active">Active</span>
+            </div>
+            <h3>SPINE</h3>
+            <p>NLP infrastructure purpose-built for cybersecurity operations. Builds processing pipelines trained on security-domain corpora — threat intel reports, CVE descriptions, SIEM alerts — to support downstream classification, summarization, and triage tasks.</p>
+            <div class="research-stack">
+              <p class="research-stack-label">stack / methodology</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">NLP</span>
+                <span class="tech-tag">Transformer models</span>
+                <span class="tech-tag">Security corpora</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- IAES-SOC -->
+          <div class="research-card">
+            <div class="research-meta">
+              <span class="research-tag">2022 – Present</span>
+              <span class="research-tag research-tag-active">Ongoing</span>
+            </div>
+            <h3>IAES-SOC</h3>
+            <p>Python and ML-based OT network monitoring system purpose-built for industrial environment SOCs. Integrates Wazuh SIEM with the ELK stack for centralized alerting and visualization. Focuses on detection fidelity in environments where false positives have operational consequences.</p>
+            <div class="research-stack">
+              <p class="research-stack-label">stack / methodology</p>
+              <div class="tech-tags">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">ML</span>
+                <span class="tech-tag">Wazuh SIEM</span>
+                <span class="tech-tag">ELK stack</span>
+                <span class="tech-tag">OT monitoring</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════ WRITEUPS ════════════════════ -->
+    <section class="section writeups" id="writeups">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label-mono" style="-webkit-text-fill-color: rgba(107,159,255,0.7); color: rgba(107,159,255,0.7);">// writeups &amp; notes</span>
+          <h2 class="section-title">Technical Writeups</h2>
+          <p class="section-sub">CTF walkthroughs, research notes, and anything else worth putting in writing.</p>
+        </div>
+
+        <div class="terminal-block">
+          <div class="terminal-titlebar">
+            <div class="terminal-dot terminal-dot-red"></div>
+            <div class="terminal-dot terminal-dot-yellow"></div>
+            <div class="terminal-dot terminal-dot-green"></div>
+            <span class="terminal-title-text">bash — writeups/</span>
+          </div>
+          <div class="terminal-body">
+            <div class="terminal-line">
+              <span class="terminal-prompt-char">$</span>
+              <span class="terminal-cmd">ls -la ./writeups/</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">total 0</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">drwxr-xr-x &nbsp;2 mgalde &nbsp;staff &nbsp;&nbsp;64 Apr 2026 .</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-output">drwxr-xr-x 12 mgalde &nbsp;staff &nbsp;384 Apr 2026 ..</span>
+            </div>
+            <div class="terminal-line">
+              <span class="terminal-prompt-char">$</span>
+              <span class="terminal-comment"># Nothing here yet.</span>
+            </div>
+            <div class="terminal-notice">
+              <strong>Incoming:</strong> CTF walkthroughs, ICS research notes, and tool documentation. The directory exists. The content is staging. Check <a href="https://bsky.app/profile/michaelgalde.com" target="_blank" rel="noopener" style="color: var(--accent-1);">@michaelgalde.com</a> for updates.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ════════════════════ CONNECT ════════════════════ -->
+    <section class="section connect" id="connect">
+      <div class="container">
+        <div class="connect-inner">
+
+          <div class="connect-text">
+            <span class="section-label-mono">// connect</span>
+            <h2 class="section-title">Get in Touch</h2>
+            <p>Reach out for research collaboration, tool questions, CTF discussion, or consulting inquiries. For professional and academic work, the full contact info is at <a href="https://michaelgalde.com" target="_blank" rel="noopener" style="color: var(--accent-1);">michaelgalde.com</a>.</p>
+          </div>
+
+          <div class="connect-links">
+
+            <a href="https://github.com/mgalde" target="_blank" rel="noopener" class="connect-link-item">
+              <div class="connect-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+                </svg>
+              </div>
+              <div class="connect-link-label">
+                <span>GitHub</span>
+                github.com/mgalde
+              </div>
+              <svg class="connect-link-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="https://linkedin.com/in/mgalde" target="_blank" rel="noopener" class="connect-link-item">
+              <div class="connect-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+                </svg>
+              </div>
+              <div class="connect-link-label">
+                <span>LinkedIn</span>
+                linkedin.com/in/mgalde
+              </div>
+              <svg class="connect-link-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="https://bsky.app/profile/michaelgalde.com" target="_blank" rel="noopener" class="connect-link-item">
+              <div class="connect-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <!-- Bluesky butterfly approximation as outline -->
+                  <path d="M12 10c-1.5-3-5-7-8-9 0 2 0 5 2 6C3 8.5 2 11 4 13c-2 0-3 2-2 4 1.5-1 3.5-1 5 0 .5 1 1.5 3 3 3s2.5-2 3-3c1.5-1 3.5-1 5 0 1-2 0-4-2-4 2-2 1-4.5-2-4 2-1 2-4 2-6-3 2-6.5 6-7 9z"/>
+                </svg>
+              </div>
+              <div class="connect-link-label">
+                <span>Bluesky</span>
+                @michaelgalde.com
+              </div>
+              <svg class="connect-link-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="mailto:Consulting@michaelgalde.com" class="connect-link-item">
+              <div class="connect-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                </svg>
+              </div>
+              <div class="connect-link-label">
+                <span>Email</span>
+                Consulting@michaelgalde.com
+              </div>
+              <svg class="connect-link-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+
+            <a href="https://michaelgalde.com" target="_blank" rel="noopener" class="connect-link-item">
+              <div class="connect-link-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/>
+                </svg>
+              </div>
+              <div class="connect-link-label">
+                <span>Professional site</span>
+                michaelgalde.com
+              </div>
+              <svg class="connect-link-arrow" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+              </svg>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════ FOOTER ════════════════════ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-logo"><span>$</span> apt-get-sudo</span>
+        <div class="footer-links">
+          <a href="#tools">Tools</a>
+          <a href="#research">Research</a>
+          <a href="#writeups">Writeups</a>
+          <a href="https://michaelgalde.com" target="_blank" rel="noopener">michaelgalde.com</a>
+        </div>
+        <span class="footer-copy">&copy; 2026 Michael Galde</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
