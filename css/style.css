@@ -581,6 +581,9 @@ p  { color: var(--text-muted); line-height: 1.78; }
   flex: 1;
 }
 
+/* Span both columns when a card is alone in its row */
+.tool-card.tool-card-wide { grid-column: 1 / -1; }
+
 /* ── RESEARCH ──────────────────────────────────────────────── */
 .research { background: var(--bg); }
 
